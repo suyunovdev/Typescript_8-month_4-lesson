@@ -26,12 +26,12 @@ const Dashboard: React.FC = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/products")
+      .get("http://localhost:4000/products")
       .then(response => {
         setProducts(response.data);
         setLoading(false);
       })
-      .catch(error => {
+      .catch(() => {
         setError("Failed to fetch data");
         setLoading(false);
       });
