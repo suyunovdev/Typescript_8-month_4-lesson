@@ -124,7 +124,7 @@ const Users: React.FC = () => {
     {
       title: "Actions",
       key: "actions",
-      render: (_: any, user: User) => (
+      render: (user: User) => (
         <Space>
           <Button
             icon={<EditOutlined />}
@@ -174,7 +174,7 @@ const Users: React.FC = () => {
         {modalType === "edit" && (
           <Input
             placeholder="ID"
-            value={editUser?.id || ""}
+            value={editUser?.id.toString() || ""}
             disabled
             className="mb-2"
           />

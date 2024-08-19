@@ -1,26 +1,8 @@
 import React, { useEffect } from "react";
-import { useProductStore } from "../../app/productStore";
-
-// Product interface (defines the structure of each product)
-interface Product {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  image: string;
-}
-
-// Define the type for the `useProductStore` return object
-interface ProductStore {
-  loading: boolean;
-  products: Product[];
-  error: string | null;
-  fetchProducts: () => void;
-}
+import { useProductStore, Product } from "../../app/productStore";
 
 const Products: React.FC = () => {
-  const productStore: ProductStore = useProductStore();
-  const { loading, products, error, fetchProducts } = productStore;
+  const { loading, products, error, fetchProducts } = useProductStore();
 
   useEffect(() => {
     fetchProducts();
@@ -28,24 +10,22 @@ const Products: React.FC = () => {
 
   return (
     <div className="p-6">
-      {loading ? (
+      {loading && (
         <div className="flex justify-center items-center">
           <div className="animate-spin border-4 border-t-4 border-blue-500 rounded-full w-8 h-8"></div>
         </div>
-      ) : error ? (
-        <p className="text-red-500 text-lg text-center">
-          {error || "An error occurred"}
-        </p>
-      ) : products.length > 0 ? (
+      )}
+      {error && <p className="text-red-500 text-lg text-center">{error}</p>}
+      {products.length > 0 ? (
         <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 overflow-auto">
           {products.map((product: Product) => (
             <div
               key={product.id}
-              className="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col justify-between">
+              className="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col">
               <img
-                src={product.image}
+                src={product.image} // Use the correct field name
                 alt={product.title}
-                className="w-full object-fit p-5"
+                className="w-40 h-40 object-cover p-5 "
               />
               <div className="p-4 flex flex-col flex-grow">
                 <h2 className="text-xl font-bold mb-2">{product.title}</h2>
@@ -58,7 +38,8 @@ const Products: React.FC = () => {
           ))}
         </div>
       ) : (
-        <p className="text-center text-lg">No products found</p>
+        !loading &&
+        !error && <p className="text-center text-lg">No products found</p>
       )}
     </div>
   );
