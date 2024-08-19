@@ -13,36 +13,6 @@
       "images": "  https://s3p.kattabozor.uz/ri/1b87edbec1f736101b38dcf3f4336e3a7b593566a26bd532ef7b814a4c467309_faecUI_6edf40l.jpg"
     },
     {
-      "id": "2345678",
-      "title": "Samsung Galaxy S23 Ultra",
-      "description": "Samsung’s flagship smartphone with an advanced camera system and powerful performance.",
-      "brand": "Samsung",
-      "category": "Smartphones",
-      "price": 1199.99,
-      "discountPercentage": 15,
-      "rating": 4.7,
-      "comments": "A powerhouse of a phone with a stunning display.",
-      "images": [
-        "https://example.com/images/galaxys23ultra-1.jpg",
-        "https://example.com/images/galaxys23ultra-2.jpg"
-      ]
-    },
-    {
-      "id": "3456789",
-      "title": "Sony WH-1000XM5",
-      "description": "Top-of-the-line noise-canceling headphones with superior sound quality.",
-      "brand": "Sony",
-      "category": "Headphones",
-      "price": 349.99,
-      "discountPercentage": 5,
-      "rating": 4.9,
-      "comments": "Unmatched noise cancellation and clarity.",
-      "images": [
-        "https://example.com/images/wh1000xm5-1.jpg",
-        "https://example.com/images/wh1000xm5-2.jpg"
-      ]
-    },
-    {
       "id": "4567890",
       "title": "Apple MacBook Pro 16-inch",
       "description": "The ultimate laptop for professionals with the M2 Max chip and stunning Retina display.",
@@ -146,6 +116,13 @@
         "https://example.com/images/goprohero11-1.jpg",
         "https://example.com/images/goprohero11-2.jpg"
       ]
+    },
+    {
+      "id": "161e",
+      "title": "efs",
+      "description": "grefd",
+      "image": "reg",
+      "price": 3242
     }
   ],
   "users": [
