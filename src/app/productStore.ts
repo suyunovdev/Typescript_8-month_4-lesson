@@ -1,31 +1,28 @@
 import axios from "axios";
 import { create } from "zustand";
 
-// Mahsulotlar uchun interfeys (Product interface)
+// Define the structure of the product data
 export interface Product {
   id: number;
   title: string;
   description: string;
   price: number;
-  images: string;
+  image: string; // This should match the field name used in your API response
 }
 
-// Store interfeysi (ProductStore interface)
 interface ProductStore {
   loading: boolean;
   products: Product[];
-  error: string;
+  error: string | null;
   fetchProducts: () => Promise<void>;
 }
 
-// ProductStore uchun Zustand store'ini yaratish
 export const useProductStore = create<ProductStore>(set => ({
   loading: false,
   products: [],
-  error: "",
+  error: null,
   fetchProducts: async () => {
-    set(state => ({
-      ...state,
+    set(() => ({
       loading: true,
     }));
     try {
@@ -33,13 +30,13 @@ export const useProductStore = create<ProductStore>(set => ({
       set(() => ({
         loading: false,
         products: res.data,
-        error: "",
+        error: null,
       }));
     } catch (err: unknown) {
       set(() => ({
         loading: false,
         products: [],
-        error: err instanceof Error ? err.message : "Something went wrong",
+        error: err instanceof Error ? err.message : "Unknown error",
       }));
     }
   },
