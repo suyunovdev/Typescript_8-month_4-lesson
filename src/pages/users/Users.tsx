@@ -33,10 +33,10 @@ const Users: React.FC = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get<User[]>("http://localhost:3001/users");
+        const response = await axios.get<User[]>("http://localhost:3000/users");
         setUsers(response.data);
         toast.success("Users loaded successfully!");
-      } catch (err) {
+      } catch {
         setError("Failed to fetch users");
         toast.error("Failed to fetch users");
       } finally {
@@ -50,13 +50,13 @@ const Users: React.FC = () => {
   const handleCreate = async () => {
     try {
       const response = await axios.post<User>(
-        "http://localhost:3001/users",
+        "http://localhost:3000/users",
         newUser
       );
       setUsers([...users, response.data]);
       closeModal();
       toast.success("User created successfully!");
-    } catch (err) {
+    } catch {
       setError("Failed to create user");
       toast.error("Failed to create user");
     }
@@ -66,7 +66,7 @@ const Users: React.FC = () => {
     if (!editUser) return;
     try {
       const response = await axios.put<User>(
-        `http://localhost:3001/users/${editUser.id}`,
+        `http://localhost:3000/users/${editUser.id}`,
         editUser
       );
       setUsers(
@@ -74,7 +74,7 @@ const Users: React.FC = () => {
       );
       closeModal();
       toast.success("User updated successfully!");
-    } catch (err) {
+    } catch {
       setError("Failed to update user");
       toast.error("Failed to update user");
     }
@@ -82,10 +82,10 @@ const Users: React.FC = () => {
 
   const handleDelete = async (id: number) => {
     try {
-      await axios.delete(`http://localhost:3001/users/${id}`);
+      await axios.delete(`http://localhost:3000/users/${id}`);
       setUsers(users.filter(user => user.id !== id));
       toast.success("User deleted successfully!");
-    } catch (err) {
+    } catch {
       setError("Failed to delete user");
       toast.error("Failed to delete user");
     }

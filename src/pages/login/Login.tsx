@@ -4,7 +4,8 @@ const Login: React.FC = () => {
   return (
     <div>
       <h1>Login Page</h1>
-    </DIV> );
+    </div>
+  );
 };
 
 export default Login;
